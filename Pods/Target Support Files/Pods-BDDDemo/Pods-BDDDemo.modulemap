@@ -1,0 +1,6 @@
+framework module Pods_BDDDemo {
+  umbrella header "Pods-BDDDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

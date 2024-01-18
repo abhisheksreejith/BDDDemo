@@ -1,0 +1,20 @@
+PODS:
+  - Cucumberish (1.4.0)
+  - OTPFieldView (1.0.1)
+
+DEPENDENCIES:
+  - Cucumberish
+  - OTPFieldView (~> 1.0)
+
+SPEC REPOS:
+  trunk:
+    - Cucumberish
+    - OTPFieldView
+
+SPEC CHECKSUMS:
+  Cucumberish: 6cbd0c1f50306b369acebfe7d9f514c9c287d26c
+  OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
+
+PODFILE CHECKSUM: b972992add2f1d9c4645f839cee33526fe870b80
+
+COCOAPODS: 1.12.1

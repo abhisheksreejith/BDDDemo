@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-BDDDemo-BDDDemoUITests/Pods-BDDDemo-BDDDemoUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/OTPFieldView/OTPFieldView.framework
+${BUILT_PRODUCTS_DIR}/Cucumberish/Cucumberish.framework
