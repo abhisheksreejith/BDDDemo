@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bdddemoswiftios-dev-125617-authRole",
+      "UnauthRoleArn": "arn:aws:iam::517820982762:role/amplify-bdddemoswiftios-dev-125617-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::517820982762:role/amplify-bdddemoswiftios-dev-125617-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bdddemoswiftios-dev-125617-deployment",
+      "UnauthRoleName": "amplify-bdddemoswiftios-dev-125617-unauthRole",
+      "StackName": "amplify-bdddemoswiftios-dev-125617",
+      "StackId": "arn:aws:cloudformation:us-east-1:517820982762:stack/amplify-bdddemoswiftios-dev-125617/81784f00-d541-11ee-b8fb-12b4588e5033",
+      "AmplifyAppId": "dllivjb8ccjq2"
+    },
+    "categories": {
+      "auth": {
+        "bdddemoswiftios57ac1d89": {}
+      }
+    }
+  }
+}

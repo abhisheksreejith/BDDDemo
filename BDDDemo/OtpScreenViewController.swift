@@ -6,6 +6,8 @@
 //
 import UIKit
 import OTPFieldView
+import Amplify
+
 class OtpScreenViewController: UIViewController {
     @IBOutlet weak var invalidOtpView: UILabel!
     @IBOutlet weak var verifyButton: UIButton!
@@ -14,6 +16,8 @@ class OtpScreenViewController: UIViewController {
     var timer = Timer()
     var countdown = 30
     var enteredOTP = ""
+    var username: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem?.tintColor = .white
@@ -48,16 +52,39 @@ class OtpScreenViewController: UIViewController {
         }
     }
     @IBAction func verifyButtonPressed(_ sender: Any) {
-        if otpTextFieldText.text == "12345"{
-            invalidOtpView.isHidden = true
-            let alert = UIAlertController(title: "User Logged In", message: "The user was logged in.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-        } else {
-            invalidOtpView.isHidden = false
-            otpTextFieldText.text = ""
+        guard let verificationCode = otpTextFieldText.text else {return}
+        self.view.showLoader()
+        Task {
+            do {
+                try await confirmEmail(forUsername: username, with: verificationCode)
+        
+            } catch {
+                print("Error signing out:", error)
+            }
         }
     }
+    func confirmEmail(forUsername username: String, with verificationCode: String) async throws{
+        do {
+            _ = try await Amplify.Auth.confirmSignUp(for: username, confirmationCode: verificationCode)
+            invalidOtpView.isHidden = true
+            let alert = UIAlertController(title: "Sign up Successfull", message: "Login using the credentials.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                guard let loginVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+                self.navigationController?.pushViewController(loginVC, animated: true)
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true)
+            print("Email confirmed successfully")
+            
+        } catch {
+            invalidOtpView.isHidden = false
+            otpTextFieldText.text = ""
+            print("Error confirming email:", error)
+        }
+    }
+
+
 }
 // MARK: - TextView delegate
 extension OtpScreenViewController: UITextViewDelegate {
